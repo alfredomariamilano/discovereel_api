@@ -3,6 +3,7 @@ class AuthenticationsController < ApplicationController
   skip_before_action :authenticate_user!
 
   def register
+    puts "baaaaaaaaaaaaaaaaaaaaaaaaaaa---------------#{user_params}"
     user = User.new(user_params)
     if user.save
       token = Auth.issue({id: user.id})

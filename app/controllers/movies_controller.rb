@@ -1,15 +1,26 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: [:show, :update, :destroy]
 
+  require 'net/http'
+  require 'json'
+
   # GET /movies
   def index
-    @movies = Movie.all
+    random_ids = Movie.ids.sort_by { rand }.slice(0, 10)
+    @movies = Movie.where(:id => random_ids)
+    # @movies = Movie.all
 
     render json: @movies
   end
 
   # GET /movies/1
   def show
+    @movie = Movie.find_by(id: params[:id])
+    url = "https://api.themoviedb.org/3/movie/#{@movie["tmdb_id"]}?api_key=#{ENV["TMDB_API_KEY"]}&language=en-US&append_to_response=images,videos&include_image_language=en,null"
+    uri = URI(url)
+    response = Net::HTTP.get(uri)
+    movie = JSON.parse(response)
+    @movie["images"] = movie["images"]
     render json: @movie
   end
 

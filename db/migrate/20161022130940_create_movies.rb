@@ -3,13 +3,12 @@ class CreateMovies < ActiveRecord::Migration[5.0]
     create_table :movies do |t|
       t.string :tmdb_id
       t.string :title
-      t.string :original_title
       t.string :poster_path
       t.string :release_date
-      t.string :images
+      t.json :images, array: true, :default => []
       t.string :overview
       t.string :imdb_id
-      t.string :videos
+    t.json :videos, array: true, :default => []
       t.string :genres
       t.string :vote_average
 

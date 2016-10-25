@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class WatchedTest < ActiveSupport::TestCase
+class ViewingTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
