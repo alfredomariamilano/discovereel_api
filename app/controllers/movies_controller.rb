@@ -21,6 +21,8 @@ class MoviesController < ApplicationController
     response = Net::HTTP.get(uri)
     movie = JSON.parse(response)
     @movie["images"] = movie["images"]
+    @movie["videos"] = movie["videos"]
+    @movie["imdb_id"] = movie["imdb_id"]
     render json: @movie
   end
 

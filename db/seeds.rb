@@ -36,15 +36,17 @@ u1 = User.create!({
 #   end
 # end
 
+# https://api.themoviedb.org/3/discover/movie?api_key=87f717b2446422b5e237165050d45a17&language=en-US&sort_by=vote_average.desc&include_adult=false&include_video=true&page=1&vote_count.gte=50&vote_average.gte=6&vote_average.lte=10
+
 # GET MOVIES --------------------------------------------
 
 counter = 0
 
-total_pages = 374
+total_pages = 176
 page = 1
 
 (1..total_pages).each do
-url = "https://api.themoviedb.org/3/discover/movie?api_key=#{ENV["TMDB_API_KEY"]}&language=en-US&sort_by=vote_average.desc&include_adult=false&include_video=true&page=#{page}&vote_count.gte=10&vote_average.gte=6&vote_average.lte=10"
+url = "https://api.themoviedb.org/3/discover/movie?api_key=#{ENV["TMDB_API_KEY"]}&language=en-US&sort_by=vote_average.desc&include_adult=false&include_video=true&page=#{page}&vote_count.gte=50&vote_average.gte=6&vote_average.lte=10"
   uri = URI(url)
   response = Net::HTTP.get(uri)
   list = JSON.parse(response)
