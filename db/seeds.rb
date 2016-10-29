@@ -1,5 +1,5 @@
 require 'net/http'
-require 'json'
+require 'json-api', '~> 0.1.1'
 
 [User, Viewing].each { |model| model.destroy_all }
 

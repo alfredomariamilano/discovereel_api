@@ -2,7 +2,7 @@ class MoviesController < ApplicationController
   before_action :set_movie, only: [:show, :update, :destroy]
 
   require 'net/http'
-  require 'json'
+  require 'json-api', '~> 0.1.1'
 
   # GET /movies
   def index
