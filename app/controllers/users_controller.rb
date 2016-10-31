@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
 
+  require 'net/http'
+  require 'json'
+
   # GET /users
   def index
     @users = User.all
