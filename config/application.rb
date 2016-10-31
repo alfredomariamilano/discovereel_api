@@ -32,7 +32,9 @@ module DiscovereelApi
       end
     end
 
-    config.autoload_paths << Rails.root.join('lib')
+    config.autoload_paths += %W(#{config.root}/lib)
+    # config.watchable_dirs['lib'] = [:rb]
+    # config.autoload_paths << Rails.root.join('lib')
 
   end
 end
