@@ -1,6 +1,6 @@
 require 'jwt'
 
-class Auth
+class Auth < AuthenticationsController
   ALGORITHM = 'HS256'
 
   def self.issue(payload, expiry_in_minutes=60*24*30)
