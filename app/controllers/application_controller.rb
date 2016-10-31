@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::API
-
+  require_dependency '../../lib/auth'
   before_action :authenticate_user!
 
     def authenticate_user!
