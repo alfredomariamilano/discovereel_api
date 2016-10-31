@@ -16,6 +16,7 @@ class AuthenticationsController < ApplicationController
   def login
     user = User.find_by_email(params[:email])
     if user && user.authenticate(params[:password])
+      puts "baaaaaaaaaaaaaaaaaaaaaaaaaaa*******************************************************************************************************************************************************************************************************************************#{params}"
       token = Auth.issue({id: user.id})
       render json: { token: token, user: UserSerializer.new(user) }, status: :ok
     else
